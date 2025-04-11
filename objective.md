@@ -4,7 +4,7 @@
 This project is designed to create a simple web-based expense tracker application. It allows users to add expenses with categories, amounts, and dates. The application calculates and displays total expenses, category-wise breakdowns, and highest/lowest spending categories. Data is stored locally using `localStorage`. Technologies used include HTML, CSS, and JavaScript.
 
 ## Output
-<iframe src="https://github.com/niat-web/Expenses_Tracker_Report" height="1000" width="300" title="Expenses_Tracker_Report"></iframe>
+<iframe src="https://niat-web.github.io/Expenses_Tracker_Report/" height="1000" width="300" title="Expenses_Tracker_Report"></iframe>
 
 ## Project Requirements
 **Technologies:** HTML, CSS, JavaScript, `localStorage`
