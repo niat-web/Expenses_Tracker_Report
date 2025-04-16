@@ -124,30 +124,36 @@ function clearAllData() {
 }
 
 // Function to toggle dark mode
+// Dark Mode Toggle
 function toggleDarkMode() {
+    // Toggle the dark-mode class on the body element
     document.body.classList.toggle('dark-mode');
-    const element = document.body;
-    element.classList.toggle("dark-mode");
-
-    const darkModeButton = document.getElementById('darkModeToggle');
+    
+    // Check if the dark mode class exists, and update localStorage accordingly
     const isDarkMode = document.body.classList.contains('dark-mode');
+    localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+
+    // Change the toggle button text
+    const darkModeButton = document.getElementById('darkModeToggle');
     darkModeButton.innerHTML = isDarkMode ? '<i class="fas fa-sun"></i> Light Mode' : '<i class="fas fa-moon"></i> Dark Mode';
 }
 
-// Event Listeners
+// Check localStorage for the theme on page load
 document.addEventListener('DOMContentLoaded', () => {
-    // Load expenses from localStorage on page load
-    updateExpenseReport();
+    // Load theme from localStorage
+    const savedTheme = localStorage.getItem('theme');
+    
+    if (savedTheme === 'dark') {
+        document.body.classList.add('dark-mode');
+        const darkModeButton = document.getElementById('darkModeToggle');
+        darkModeButton.innerHTML = '<i class="fas fa-sun"></i> Light Mode';
+    } else {
+        document.body.classList.remove('dark-mode');
+        const darkModeButton = document.getElementById('darkModeToggle');
+        darkModeButton.innerHTML = '<i class="fas fa-moon"></i> Dark Mode';
+    }
 
-    // Form submission
-    const expenseForm = document.getElementById('expenseForm');
-    expenseForm.addEventListener('submit', addExpense);
-
-    // Clear all data
-    const clearAllButton = document.getElementById('clearAll');
-    clearAllButton.addEventListener('click', clearAllData);
-
-    // Dark mode toggle
+    // Event listener for dark mode toggle button
     const darkModeToggle = document.getElementById('darkModeToggle');
     darkModeToggle.addEventListener('click', toggleDarkMode);
 });
